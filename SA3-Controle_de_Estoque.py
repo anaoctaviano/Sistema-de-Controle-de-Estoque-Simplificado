@@ -69,6 +69,26 @@ def atualizarEstoque():  ## Essa função atualiza a quantidade de produtos
         estoque[linhaProcurada][2] = quantidade
     travarMenu()
 
+def removerProduto(): ## Essa função remove um produto 
+
+    IDproduto = int(input("Digite o ID do produto que deseja remover: "))
+
+    linhaProcurada = -1
+
+    for i in range(len(estoque)): 
+        if(estoque[i][0] == IDproduto): 
+            linhaProcurada = i 
+    
+    if linhaProcurada == -1:
+        print("ID não encontrado!")
+
+    else:
+        print(f"O produto é: {estoque[linhaProcurada]}")
+        estoque.pop(linhaProcurada)
+        print("Produto removido com sucesso!")
+    travarMenu()
+
+
 def travarMenu():
 
     print("-----------------------------------------")
@@ -84,7 +104,8 @@ while True:
     print("2- Listar todos os produtos")
     print("3- Buscar produto por ID")
     print("4- Atualizar estoque")
-    print("5- Sair do programa")
+    print("5- Remover produto")
+    print("6- Sair do programa")
     escolha = input("\nDigite a sua escolha: ")
 
     if escolha == "1":
@@ -100,8 +121,13 @@ while True:
         atualizarEstoque()
 
     elif escolha == "5":
+        removerProduto()
+
+    elif escolha == "6":
         print("Saindo do menu...")
         break
+
+
     
 
 
