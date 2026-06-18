@@ -14,19 +14,22 @@ print("------ Sistema de Controle de Estoque Simplificado ------\n")
 def adicionarProduto():  ## Essa função serve para adicionar produtos na lista
     global estoque
    
-    id = input("Digite o ID do novo produto: ")
+    id = input("\nDigite o ID do novo produto: ")
     nome = input("Digite o nome do novo produto: ")
     quantidade = input("Digite a quantidade do novo produto: ")
     localizacao = input("Digite a localização do novo produto: ")
 
     estoque.append([id, nome, quantidade, localizacao])
     print("Produto registrado no Sistema com sucesso!")
+    travarMenu()
 
 def listarProdutos():  ## Essa função serve para listar todos os produtos
     global estoque 
     
+    print("\nLista de Produtos do Estoque:\n")
     for produto in estoque:
         print(produto)
+    travarMenu()
 
 def buscarProdutoPorID():  ## Essa função busca um produto pelo seu ID
     global estoque
@@ -37,8 +40,14 @@ def buscarProdutoPorID():  ## Essa função busca um produto pelo seu ID
     for i in range(len(estoque)): 
         if(estoque[i][0] == IDprocurado): 
             linhaProcurada = i 
-    print(f"O produto procurado está na linha {linhaProcurada}")
-    print(f"O produto procurado é: {estoque[linhaProcurada]}")
+    
+    if linhaProcurada == -1:
+        print("ID não encontrado!")
+
+    else:    
+        print(f"O produto procurado está na linha {linhaProcurada}")
+        print(f"O produto procurado é: {estoque[linhaProcurada]}")
+    travarMenu()
     
 def atualizarEstoque():  ## Essa função atualiza a quantidade de produtos
     global estoque
@@ -58,6 +67,12 @@ def atualizarEstoque():  ## Essa função atualiza a quantidade de produtos
         print(f"O produto é: {estoque[linhaProcurada]}")
         quantidade = int(input("Digite a nova quantidade do produto: "))
         estoque[linhaProcurada][2] = quantidade
+    travarMenu()
+
+def travarMenu():
+
+    print("-----------------------------------------")
+    input("\nPressione <ENTER> para continuar...")
     
 
 ## Criando o menu
@@ -83,5 +98,10 @@ while True:
 
     elif escolha == "4":
         atualizarEstoque()
+
+    elif escolha == "5":
+        print("Saindo do menu...")
+        break
+    
 
 
