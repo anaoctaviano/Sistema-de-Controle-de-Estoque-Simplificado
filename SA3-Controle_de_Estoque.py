@@ -37,8 +37,27 @@ def buscarProdutoPorID():  ## Essa função busca um produto pelo seu ID
     for i in range(len(estoque)): 
         if(estoque[i][0] == IDprocurado): 
             linhaProcurada = i 
-    print(f"\nO produto procurado está na linha {linhaProcurada}")
+    print(f"O produto procurado está na linha {linhaProcurada}")
     print(f"O produto procurado é: {estoque[linhaProcurada]}")
+    
+def atualizarEstoque():  ## Essa função atualiza a quantidade de produtos
+    global estoque
+
+    IDprocurado = int(input("Digite o ID do produto que você quer alterar: "))
+
+    linhaProcurada = -1
+
+    for i in range(len(estoque)): 
+        if(estoque[i][0] == IDprocurado): 
+            linhaProcurada = i 
+
+    if linhaProcurada == -1:
+        print("ID não encontrado!")
+
+    else:
+        print(f"O produto é: {estoque[linhaProcurada]}")
+        quantidade = int(input("Digite a nova quantidade do produto: "))
+        estoque[linhaProcurada][2] = quantidade
     
 
 ## Criando o menu
@@ -61,21 +80,8 @@ while True:
 
     elif escolha == "3":
         buscarProdutoPorID()
-        
-        
 
-## Encontrar a posição que eu quero excluir
-## Excluir
+    elif escolha == "4":
+        atualizarEstoque()
 
-## nomeProcurado = "Piran"
-# linhaProcurada = -1
-
-# for i in range(len(alunos)): ## Varre linha a linha da matriz
-  #  if(alunos[i][0] == nomeProcurado): ## Verifica se a posição do nome é igual ao nome procurado
-  #      linhaProcurada = i 
-# print(f"\nO nome procurado está na linha {linhaProcurada}")
-
-# print("\nExcluindo o aluno procurado: ")
-# alunos.pop(linhaProcurada)
-# mostrarAlunos()
 
