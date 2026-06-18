@@ -7,7 +7,9 @@ estoque = [
 ]
 
 
-print("------ Sistema de Controle de Estoque Simplificado ------")
+print("------ Sistema de Controle de Estoque Simplificado ------\n")
+
+## Criando as funções
 
 def adicionarProduto():
     global estoque
@@ -19,7 +21,13 @@ def adicionarProduto():
 
     estoque.append([id, nome, quantidade, localizacao])
     print("Produto registrado no Sistema com sucesso!")
-    print(estoque)
+
+def listarProdutos():
+    global estoque 
+    
+    for produto in estoque:
+        print(produto)
+
 
 ## Criando o menu
 print("------------ Menu Interativo ------------")
@@ -35,6 +43,9 @@ while True:
 
     if escolha == "1":
         adicionarProduto()
+    
+    elif escolha == "2":
+        listarProdutos()
         
 
 
